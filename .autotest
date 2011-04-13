@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+Autotest.options.merge!({
+  :no_full_after_start  => true,
+  :no_full_after_failed => true,
+})
+
+Autotest.add_hook :post_initialize do |at|
+  at.add_exception %r{fixtures/.*}
+  at.add_exception %r{tmp/.*}
+end
